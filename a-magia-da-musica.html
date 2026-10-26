@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="a-magia-da-musica.css"></link>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="a-magia-da-musica.js"></script>
+    <title>A Magia da Música</title>
+</head>
+<body>
+    <a-scene loading-screen="enabled:false">
+        <!-- Componentes (ficheiros externos)-->
+        <a-assets>
+            <a-asset-item id="sala" src="./assets/sala.gltf"></a-asset-item>
+            <a-asset-item id="piano" src="./assets/piano.gltf"></a-asset-item>
+            <a-asset-item id="guitarra" src="./assets/guitarra.gltf"></a-asset-item>
+            <a-asset-item id="vinil" src="./assets/vinil.gltf"></a-asset-item>
+            <a-asset-item id="leitor" src="./assets/leitor.gltf"></a-asset-item>
+        </a-assets>
+
+        <!-- Câmara -->
+        <a-camera look-controls position="0 1.6 0">
+            <a-cursor></a-cursor>
+        </a-camera>
+
+        <!-- Fundo de cena/Teto da sala -->
+        <a-sky color="#000000"></a-sky>
+
+        <!-- Sala de música -->
+        <a-entity gltf-model="#sala">
+            <!-- Parede da parte da frente -->
+            <a-box height="5" width="18" depth="0.1" static-body position="0 2.448 4.548"></a-box> 
+            <!-- Parede da parte detrás -->
+            <a-box height="5" width="18" depth="0.1" static-body position="0 2.448 -4.548"></a-box> 
+            <!-- Parede do lado esquerdo -->
+            <a-box height="5" width="0.1" depth="9" static-body position="-8.766 2.474 0"></a-box> 
+            <!-- Parede do lado direito -->
+            <a-box height="5" width="0.1" depth="9" static-body position="8.808 2.464 0"></a-box> 
+        </a-entity>
+
+        <!-- Piano -->
+        <a-entity gltf-model="#piano" position="6.166 -0.813 2.926" cursor-listener>
+            <a-animation attribute="rotation" dur="5000" easing="linear" to="0 360 0" repeat="indefinite"></a-animation>
+            <a-entity position="0 -1.5 0" text="align: center; width: 4" cursor-listener></a-entity>
+            <a-sound src="./assets/piano.mp3" volume="3" positional="true"></a-sound>
+        </a-entity>
+
+        <!-- Guitarra -->
+        <a-entity gltf-model="#guitarra" position="-0.649 1.372 -4.134" scale="3 3 3" rotation="0 -90 0" cursor-listener>
+            <a-animation attribute="rotation" dur="5000" easing="linear" to="0 360 0" repeat="indefinite"></a-animation>
+            <a-entity position="0 -1.5 0" text="align: center; width: 4" cursor-listener></a-entity>
+            <a-sound src="./assets/guitarra-audio.mp3" volume="3" positional="true"></a-sound>
+        </a-entity>
+
+        <!-- Vinil 1 -->
+        <a-entity gltf-model="#vinil" position="-8.012 3.627 3.257" scale="0.5 0.5 0.5" rotation="-90 -90 0" cursor-listener>
+            <a-animation attribute="rotation" dur="5000" easing="linear" to="0 360 0" repeat="indefinite"></a-animation>
+            <a-entity position="0 -1.5 0" text="align: center; width: 4" cursor-listener></a-entity>
+            <a-sound src="./assets/vinil-1.mp3" volume="3" positional="true"></a-sound>
+        </a-entity>
+
+        <!-- Vinil 2 -->
+        <a-entity gltf-model="#vinil" position="-8.012 2.862 1.881" scale="0.5 0.5 0.5" rotation="-90 -90 0" cursor-listener>
+            <a-animation attribute="rotation" dur="5000" easing="linear" to="0 360 0" repeat="indefinite"></a-animation>
+            <a-entity position="0 -1.5 0" text="align: center; width: 4" cursor-listener></a-entity>
+            <a-sound src="./assets/vinil-2.mp3" volume="3" positional="true"></a-sound>
+        </a-entity>
+
+        <!-- Vinil 3 -->
+        <a-entity gltf-model="#vinil" position="-8.012 3.471 0.534" scale="0.5 0.5 0.5" rotation="-90 -90 0" cursor-listener>
+            <a-animation attribute="rotation" dur="5000" easing="linear" to="0 360 0" repeat="indefinite"></a-animation>
+            <a-entity position="0 -1.5 0" text="align: center; width: 4" cursor-listener></a-entity>
+            <a-sound src="./assets/vinil-3.mp3" volume="3" positional="true"></a-sound>
+        </a-entity>
+
+        <!-- Leitor -->
+        <a-entity gltf-model="#leitor" position="-0.076 0.012 0.052" scale="1 1 1" rotation="0 0 0" cursor-listener click-text>
+            <a-animation attribute="rotation" dur="5000" easing="linear" to="0 360 0" repeat="indefinite"></a-animation>
+            <a-entity position="0 -1.5 0" text="align: center; width: 4" cursor-listener></a-entity>
+            <a-sound src="./assets/leitor.mp3" volume="3" positional="true"></a-sound>
+        </a-entity>
+
+    </a-scene>
+
+    <!-- Descrição inicial -->
+    <div id="description">
+        <h1>A Magia da Música</h1>
+        <p>Explore a sala de modo a descobrir a verdadeira magia da música!</p>
+        <button>Começar</button>
+    </div>
+</body>
+</html>
